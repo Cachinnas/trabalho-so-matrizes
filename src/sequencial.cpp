@@ -13,7 +13,6 @@ int main(int argc, char* argv[]) {
 
     int n1, m1, n2, m2;
 
-    // Lendo o arquivo 1 direto na main
     ifstream arq1(argv[1]);
     arq1 >> n1 >> m1;
     
@@ -25,7 +24,6 @@ int main(int argc, char* argv[]) {
     }
     arq1.close();
 
-    // Lendo o arquivo 2 direto na main
     ifstream arq2(argv[2]);
     arq2 >> n2 >> m2;
 
@@ -37,13 +35,10 @@ int main(int argc, char* argv[]) {
     }
     arq2.close();
 
-    // Prepara a matriz C cheia de zeros
     vector<vector<int>> C(n1, vector<int>(m2, 0));
 
-    // Começa a contar o tempo
     auto inicio = chrono::high_resolution_clock::now();
 
-    // Multiplicação bruta
     for(int i = 0; i < n1; i++) {
         for(int j = 0; j < m2; j++) {
             for(int k = 0; k < m1; k++) {
@@ -52,11 +47,9 @@ int main(int argc, char* argv[]) {
         }
     }
 
-    // Para de contar
     auto fim = chrono::high_resolution_clock::now();
     chrono::duration<double> tempo = fim - inicio;
 
-    // Gerando o arquivo de saida
     ofstream saida("resultado_sequencial.txt");
     saida << n1 << " " << m2 << "\n";
     
