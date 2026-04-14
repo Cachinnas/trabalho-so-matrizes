@@ -50,7 +50,7 @@ int main(int argc, char* argv[]) {
     auto fim = chrono::high_resolution_clock::now();
     chrono::duration<double> tempo = fim - inicio;
 
-    ofstream saida("resultado_sequencial.txt");
+    ofstream saida("resultados/resultado_sequencial.txt");
     saida << n1 << " " << m2 << "\n";
     
     for (int i = 0; i < n1; i++) {
