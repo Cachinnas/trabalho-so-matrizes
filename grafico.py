@@ -1,11 +1,11 @@
 import matplotlib.pyplot as plt
 
 threads_tempos = [117.177, 79.95, 64.604, 68.811]
-processos_tempos = [144.703, 0, 0, 0]
+processos_tempos = [144.703, 76.2674, 83.7159, 112.2994]
 sequencial_medio = 236.182
 eixo_x = [2, 4, 8, 16]
 
-plt.figure(figsize=(10, 6))
+plt.figure(figsize=(10, 6)) 
 
 plt.axhline(y=sequencial_medio, color='r', linestyle='--', label=f'Sequencial ({sequencial_medio}s)')
 
