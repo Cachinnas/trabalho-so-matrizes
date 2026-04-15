@@ -29,12 +29,14 @@ void lerMatrizes(string arq1, string arq2) {
 }
 
 void multiplica_thread(int id, int linha_inicio, int linha_fim) {
+    // Inicia a contagem de tempo da fatia de trabalho desta thread
     auto inicio = high_resolution_clock::now();
     vector<vector<int>> C_local(linha_fim - linha_inicio, vector<int>(m2, 0));
 
     for (int i = linha_inicio; i < linha_fim; i++) {
         for (int j = 0; j < m2; j++) {
             for (int k = 0; k < m1; k++) {
+                // Acessa as matrizes globais diretamente (memória compartilhada)
                 C_local[i - linha_inicio][j] += M1[i][k] * M2[k][j];
             }
         }
@@ -43,7 +45,6 @@ void multiplica_thread(int id, int linha_inicio, int linha_fim) {
     auto fim = high_resolution_clock::now();
     duration<double> tempo = fim - inicio;
 
-    // CORREÇÃO: Salva em resultados/
     string nome_arq = "resultados/resultado_thread_" + to_string(id) + ".txt";
     ofstream saida(nome_arq);
     saida << (linha_fim - linha_inicio) << " " << m2 << "\n";
@@ -69,6 +70,7 @@ int main(int argc, char* argv[]) {
     for (int i = 0; i < num_threads; i++) {
         int linhas_desta_thread = linhas_por_thread + (i < resto ? 1 : 0);
         int linha_fim = linha_atual + linhas_desta_thread;
+        // Dispara a thread passando o ID e o intervalo de linhas que ela vai processar
         threads.push_back(thread(multiplica_thread, i, linha_atual, linha_fim));
         linha_atual = linha_fim;
     }

@@ -7,10 +7,6 @@
 
 using namespace std;
 
-/**
- * Função para gerar uma matriz com valores aleatórios e salvar em arquivo.
- * O nome do arquivo agora inclui o caminho da pasta 'matrizes/'.
- */
 void gerarMatriz(string nomeArquivo, int linhas, int colunas) {
     ofstream arquivo(nomeArquivo);
     if (!arquivo.is_open()) {
@@ -36,22 +32,18 @@ int main(int argc, char* argv[]) {
         return 1;
     }
 
-    // Converte argumentos de linha de comando para inteiros
     int n1 = stoi(argv[1]);
     int m1 = stoi(argv[2]);
     int n2 = stoi(argv[3]);
     int m2 = stoi(argv[4]);
 
-    // Validação matemática para multiplicação de matrizes
     if (m1 != n2) {
         cout << "Erro: O numero de colunas da M1 (" << m1 << ") deve ser igual ao de linhas da M2 (" << n2 << ")." << endl;
         return 1;
     }
 
-    // Inicializa a semente do gerador de números aleatórios
     srand(time(NULL)); 
 
-    // CORREÇÃO: Caminhos ajustados para a pasta 'matrizes/'
     gerarMatriz("matrizes/M1.txt", n1, m1);
     gerarMatriz("matrizes/M2.txt", n2, m2);
 

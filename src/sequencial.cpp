@@ -39,6 +39,8 @@ int main(int argc, char* argv[]) {
 
     auto inicio = chrono::high_resolution_clock::now();
 
+    // Loop triplo tradicional para multiplicação de matrizes
+    // Aqui o processador faz tudo sozinho, linha por linha, sem ajuda de threads ou processos
     for(int i = 0; i < n1; i++) {
         for(int j = 0; j < m2; j++) {
             for(int k = 0; k < m1; k++) {
