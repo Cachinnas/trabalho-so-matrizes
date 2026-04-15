@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
 threads_tempos = [117.177, 79.95, 64.604, 68.811]
-processos_tempos = [150, 180, 120, 160]
+processos_tempos = [144.703, 0, 0, 0]
 sequencial_medio = 236.182
 eixo_x = [2, 4, 8, 16]
 
